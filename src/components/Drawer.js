@@ -24,11 +24,14 @@ import StickyHeadTable from './Table';
 import setting_logo from "../assets/Settings.png"
 import back_logo from "../assets/back.png"
 import globe_logo from "../assets/globe.png"
+import useMediaQuery from '@mui/material/useMediaQuery';
+import profile_logo from "../assets/Avatar.png"
 
 const drawerWidth = 240;
 
 export default function MyDrawer() {
 
+  const isMobile = useMediaQuery('(max-width:600px)');
 
     const listData1 = [
         {
@@ -100,8 +103,9 @@ export default function MyDrawer() {
     <>
       <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <PrimarySearchAppBar drawerWidth={drawerWidth}/>
-      <Drawer
+      {!isMobile && (<PrimarySearchAppBar drawerWidth={drawerWidth}/>)}
+      {!isMobile && (
+        <Drawer
         sx={{
           width: drawerWidth,
           flexShrink: 0,
@@ -147,12 +151,19 @@ export default function MyDrawer() {
           </Box>
         </Box>
       </Drawer>
+      )}
       <Box
         component="main"
         sx={{ bgcolor: '#f0f2f4', p: 3, flexGrow: 1}}
       >
-        <Toolbar />
-        <Box sx={{color: "white", backgroundColor: "#282828", p: 3, borderRadius: "16px", display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+        {!isMobile && <Toolbar />}
+        {isMobile && (
+        <><Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+          <img src={logo}/>
+          <img src={profile_logo}/>
+          </Box></>
+      )}
+        <Box sx={{color: "white", backgroundColor: "#282828", p: 3, borderRadius: "16px", display: !isMobile ? "flex" : "block", justifyContent: "space-between", alignItems: "center"}}>
           <Box>
             <Typography style={{
               fontSize: "28px",
@@ -183,7 +194,7 @@ export default function MyDrawer() {
         <Grid container sx={{
           marginTop: "32px"
         }} columnSpacing={4}>
-            <Grid item lg={3} xl={3}>
+            <Grid item xs={12} lg={3} xl={3}>
               <Box sx={{
                 backgroundColor: "white",
                 borderRadius: "12px",
@@ -217,7 +228,7 @@ export default function MyDrawer() {
                 }}>+45%</span> From 4.6%</Typography>
               </Box>
             </Grid>
-            <Grid item lg={3} xl={3}>
+            <Grid item xs={12} lg={3} xl={3}>
               <Box sx={{
                 backgroundColor: "white",
                 borderRadius: "12px",
@@ -251,7 +262,7 @@ export default function MyDrawer() {
                 }}>-1.7%</span> From 4.6%</Typography>
               </Box>
             </Grid>
-            <Grid item lg={3} xl={3}>
+            <Grid item xs={12} lg={3} xl={3}>
               <Box sx={{
                 backgroundColor: "white",
                 borderRadius: "12px",
@@ -285,7 +296,7 @@ export default function MyDrawer() {
                 }}>0.00</span></Typography>
               </Box>
             </Grid>
-            <Grid item lg={3} xl={3}>
+            <Grid item xs={12} lg={3} xl={3}>
               <Box sx={{
                 backgroundColor: "white",
                 borderRadius: "12px",

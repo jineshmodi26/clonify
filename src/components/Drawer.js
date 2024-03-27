@@ -26,6 +26,7 @@ import back_logo from "../assets/back.png"
 import globe_logo from "../assets/globe.png"
 import useMediaQuery from '@mui/material/useMediaQuery';
 import profile_logo from "../assets/Avatar.png"
+import TextField from '@mui/material/TextField';
 
 const drawerWidth = 240;
 
@@ -163,18 +164,25 @@ export default function MyDrawer() {
           <img src={profile_logo}/>
           </Box></>
       )}
-        <Box sx={{color: "white", backgroundColor: "#282828", p: 3, borderRadius: "16px", display: !isMobile ? "flex" : "block", justifyContent: "space-between", alignItems: "center"}}>
+
+          {isMobile && <>
+            <TextField fullWidth label="Search..." id="fullWidth" sx={{marginTop: "10px", marginBottom: "10px"}}/>
+          </>}
+
+        <Box sx={{color: "white", backgroundColor: "#282828", p: 3, borderRadius: "16px", display: !isMobile ? "flex" : "block", justifyContent: "space-between", alignItems: "center", marginTop: isMobile ? "10px" : null}}>
           <Box>
             <Typography style={{
               fontSize: "28px",
               fontWeight: "600",
-              fontFamily: "Inter"
+              fontFamily: "Inter",
+              textAlign : isMobile ? "Center" : null
             }}>Unlock Premium Stats</Typography>
             <Typography style={{
               fontSize: "14px",
               fontWeight: "400",
               marginTop: "8px",
-              fontFamily: "Inter"
+              fontFamily: "Inter",
+              textAlign : isMobile ? "Center" : null
             }}>Get up to 10TB of storage for a limited time</Typography>
           </Box>
           <Box>
@@ -186,7 +194,9 @@ export default function MyDrawer() {
               color: "#282828",
               fontWeight: "600",
               fontFamily: "Inter",
-              backgroundColor: "white"
+              backgroundColor: "white",
+              margin: isMobile? "auto" : null,
+              marginTop: isMobile ? "10px" : null
             }}
             ><img src={bold_logo} style={{marginRight: "5px"}}/>Upgrade</Button>
             </Box>          
@@ -200,7 +210,8 @@ export default function MyDrawer() {
                 borderRadius: "12px",
                 padding: "20px",
                 minWidth: "262px",
-                boxShadow: "0px 1px 10px #0000000F"
+                boxShadow: "0px 1px 10px #0000000F",
+                marginBottom: isMobile ? "20px" : "0px"
               }}>
                 <Typography sx={{
                   fontSize: "16px",
@@ -235,6 +246,7 @@ export default function MyDrawer() {
                 padding: "20px",
                 minWidth: "262px",
                 boxShadow: "0px 1px 10px #0000000F",
+                marginBottom: isMobile ? "20px" : "0px"
               }}>
                 <Typography sx={{
                   fontSize: "16px",
@@ -269,6 +281,7 @@ export default function MyDrawer() {
                 padding: "20px",
                 minWidth: "262px",
                 boxShadow: "0px 1px 10px #0000000F",
+                marginBottom: isMobile ? "20px" : "0px"
               }}>
                 <Typography sx={{
                   fontSize: "16px",
@@ -335,7 +348,8 @@ export default function MyDrawer() {
           marginTop: "32px",
           borderRadius: "12px",
           backgroundColor: "white",
-          padding: "0px 0px 24px 0px"
+          padding: "0px 0px 24px 0px",
+          width: isMobile ? "270px" : "100%"
         }}>
           <Box sx={{
             display: "flex",
@@ -360,7 +374,8 @@ export default function MyDrawer() {
           marginTop: "32px",
           borderRadius: "12px",
           backgroundColor: "white",
-          padding: "0px 0px 0px 0px"
+          padding: "0px 0px 0px 0px",
+          width: isMobile ? "270px" : "100%"
         }}>
           <Box sx={{
             display: "flex",
